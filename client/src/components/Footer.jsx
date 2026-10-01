@@ -1,0 +1,9 @@
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, MapPin, Phone, Truck } from 'lucide-react';
+import { restaurant } from '../data/restaurant.js';
+import { telephone } from '../utils/format.js';
+import { Logo, SocialIcon } from './ui.jsx';
+
+export default function Footer() {
+  return <footer className="site-footer"><div className="container footer-grid"><div className="footer-brand"><Link to="/" aria-label="Café 007 home"><Logo /></Link><p>Big flavours, happy tables.<br />Your next hangout starts here.</p><div className="social-links"><a href={restaurant.facebook} target="_blank" rel="noreferrer" aria-label="Café 007 Mailsi on Facebook"><SocialIcon kind="facebook" /></a><a href={restaurant.instagram} target="_blank" rel="noreferrer" aria-label="Café 007 Mailsi on Instagram"><SocialIcon kind="instagram" /></a></div></div><div><h3>Come on in</h3><Link to="/about">Our story</Link><Link to="/branches">Our branches</Link><Link to="/reservation">Book a table</Link><Link to="/contact">Get in touch</Link></div><div><h3>Find your favourite</h3><Link to="/menu?category=Burgers">Burgers</Link><Link to="/menu?category=Pizza">Pizza</Link><Link to="/menu?category=Wraps">Wraps & more</Link><Link to="/deals">Deals to share<ArrowUpRight size={13} /></Link><Link to="/orders">My orders</Link></div><div className="footer-contact"><h3>Let's talk food</h3><p><MapPin size={17} /><span>{restaurant.address}</span></p><div className="footer-phones"><Phone size={16} /><div>{restaurant.phones.map(phone => <a key={phone} href={telephone(phone)}>{phone}</a>)}</div></div><p className="footer-delivery"><Truck size={18} /><span>Free delivery on orders<br />over <strong>Rs. 500</strong></span></p></div></div><div className="container footer-bottom"><p>&copy; {new Date().getFullYear()} Caf&eacute; 007. All rights reserved.</p><p>Quality is our recipe.<span className="footer-dot" />Let's Hangout...</p></div></footer>;
+}
